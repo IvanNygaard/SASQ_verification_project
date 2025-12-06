@@ -53,6 +53,7 @@ set_color(occOrbitalB, :cyan)
 #gAeff  = real_tensor("FAeff", 1,2) + summation((-2 * psym_tensor("g", 1,2,3,3) + psym_tensor("g", 1,3,3,2)) * constrain(3 => occOrbitalA), [3]) + summation((2 * psym_tensor("g", 1,2,3,3) - psym_tensor("g", 1,3,3,2)) * constrain(3 => occOrbitalB), [3])
 #gBeff  = real_tensor("FBeff", 1,2) + summation((-2 * psym_tensor("g", 1,2,3,3) + psym_tensor("g", 1,3,3,2)) * constrain(3 => occOrbitalB), [3]) + summation((2 * psym_tensor("g", 1,2,3,3) - psym_tensor("g", 1,3,3,2)) * constrain(3 => occOrbitalA), [3])
 
+
 gA  = real_tensor("F", 1,2) + summation((-2 * psym_tensor("g", 1,2,3,3) + psym_tensor("g", 1,3,3,2)) * constrain(3 => occOrbitalA), [3])
 gB  = real_tensor("F", 1,2) + summation((-2 * psym_tensor("g", 1,2,3,3) + psym_tensor("g", 1,3,3,2)) * constrain(3 => occOrbitalB), [3])
 
@@ -66,14 +67,11 @@ hBA = summation(psym_tensor("h", 1,2) * E(1,2) * constrain(1 => orbitalB, 2 => o
 
 
 # two-electron parts.
+# particle conserving terms. 
 gA = 1//2 * summation(psym_tensor("g", 1:4...) * e(1:4...) * constrain(1 => orbitalA, 2 => orbitalA, 3 => orbitalA, 4 => orbitalA), 1:4)
 gB = 1//2 * summation(psym_tensor("g", 1:4...) * e(1:4...) * constrain(1 => orbitalB, 2 => orbitalB, 3 => orbitalB, 4 => orbitalB), 1:4)
-
-
-# particle conserving term.
-gAB  = summation(psym_tensor("g", 1:4...) * e(1:4...) * constrain(1 => orbitalB, 2 => orbitalB, 3 => orbitalA, 4 => orbitalA), 1:4) 
-gAB2 = 1//2 * summation(psym_tensor("g", 1:4...) * e(1:4...) * constrain(1 => orbitalA, 2 => orbitalB, 3 => orbitalB, 4 => orbitalA), 1:4)
-gAB3 =  1//2 * summation(psym_tensor("g", 1:4...) * e(1:4...) * constrain(1 => orbitalB, 2 => orbitalA, 3 => orbitalA, 4 => orbitalB), 1:4)
+gBBAA = summation(psym_tensor("g", 1:4...) * e(1:4...) * constrain(1 => orbitalB, 2 => orbitalB, 3 => orbitalA, 4 => orbitalA), 1:4) 
+gABBA = summation(psym_tensor("g", 1:4...) * e(1:4...) * constrain(1 => orbitalA, 2 => orbitalB, 3 => orbitalB, 4 => orbitalA), 1:4)
 
 
 # particle breaking terms.
@@ -88,7 +86,7 @@ gBABB = simplify(summation(psym_tensor("g", 1:4...) * e(1:4...) * constrain(1 =>
 # Hamiltonian:
 H_A  = hA + gA
 H_B  = hB + gB
-H_ABpc = gAB + gAB2 + gAB3 
+H_ABpc = gBBAA + gABBA
 
 
 H_ABpb = hAB + hBA + gBAAA + gABAA + gABAB + gBABA + gABBB + gBABB
@@ -158,10 +156,6 @@ function A22()
     braket = look_for_tensor_replacements(braket, make_exchange_transformer("g", "L")) 
     braket = simplify_heavy(braket)
 end   
-
-
-# Functions for double-excitation matrix elements: 
-
 
 
 
