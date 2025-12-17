@@ -4,7 +4,8 @@
 # Created: 28/10/2025
 # Description: Code used to verify the derivation of
 #              the first element of the CC-Jacobian
-#              that was derived by hand. 
+#              that was derived by hand for the simplified
+#              case of T2 = 0. 
 # -----------------------------------------------------
 
 # Imports.
@@ -46,24 +47,14 @@ set_color(occOrbitalB, :cyan)
 
 # Definiting operators.
 # One-electron parts.
-
-# Debugging
-#F_pq = real_tensor("F", 1,2) + summation((-2 * rsym_tensor("g", 1,2,3,3) + rsym_tensor("g", 1,3,3,2)) * constrain(3 => OccupiedOrbital), [3])
-#hA = summation(real_tensor("h", 1,2) * E(1,2) * constrain(1 => orbitalA, 2 => orbitalA), 1:2)
-#hB = summation(real_tensor("h", 1,2) * E(1,2) * constrain(1 => orbitalB, 2 => orbitalB), 1:2)
-#FAeff  = real_tensor("FAeff", 1,2) + summation((-2 * psym_tensor("g", 1,2,3,3) + psym_tensor("g", 1,3,3,2)) * constrain(3 => occOrbitalA), [3]) + summation((2 * rsym_tensor("g", 1,2,3,3) - rsym_tensor("g", 1,3,3,2)) * constrain(3 => occOrbitalB), [3])
-#FBeff  = real_tensor("FBeff", 1,2) + summation((-2 * psym_tensor("g", 1,2,3,3) + psym_tensor("g", 1,3,3,2)) * constrain(3 => occOrbitalB), [3]) + summation((2 * rsym_tensor("g", 1,2,3,3) - rsym_tensor("g", 1,3,3,2)) * constrain(3 => occOrbitalA), [3])
-
 gA  = real_tensor("F", 1,2) + summation((-2 * psym_tensor("g", 1,2,3,3) + psym_tensor("g", 1,3,3,2)) * constrain(3 => occOrbitalA), [3])
 gB  = real_tensor("F", 1,2) + summation((-2 * psym_tensor("g", 1,2,3,3) + psym_tensor("g", 1,3,3,2)) * constrain(3 => occOrbitalB), [3])
 
 
 hA  = summation(gA * E(1,2) * constrain(1 => orbitalA, 2 => orbitalA), 1:2)
 hB  = summation(gB * E(1,2) * constrain(1 => orbitalB, 2 => orbitalB), 1:2)
-#hAB = summation(F_pq * E(1,2) * constrain(1 => orbitalA, 2 => orbitalB), 1:2)                       # F_AB
-#hBA = summation(F_pq * E(1,2) * constrain(1 => orbitalB, 2 => orbitalA), 1:2)                       # F_AB
-hAB = summation(psym_tensor("h", 1,2) * E(1,2) * constrain(1 => orbitalA, 2 => orbitalB), 1:2)       # F_AB
-hBA = summation(psym_tensor("h", 1,2) * E(1,2) * constrain(1 => orbitalB, 2 => orbitalA), 1:2)       # F_BA
+hAB = summation(psym_tensor("h", 1,2) * E(1,2) * constrain(1 => orbitalA, 2 => orbitalB), 1:2)       
+hBA = summation(psym_tensor("h", 1,2) * E(1,2) * constrain(1 => orbitalB, 2 => orbitalA), 1:2)      
 
 
 # two-electron parts.
@@ -86,7 +77,7 @@ gBABB = simplify(summation(psym_tensor("g", 1:4...) * e(1:4...) * constrain(1 =>
 # Hamiltonian:
 H_A  = hA + gA
 H_B  = hB + gB
-H_ABpc = gBBAA + gABBA
+H_ABpc = gABBA + gBBAA
 
 
 H_ABpb = hAB + hBA + gBAAA + gABAA + gABAB + gBABA + gABBB + gBABB
@@ -94,28 +85,32 @@ H_ABpb = hAB + hBA + gBAAA + gABAA + gABAB + gBABA + gABBB + gBABB
 
 
 Hpc  = H_A + H_B + H_ABpc
-#Hpc  = H_ABpc:wq
+#Hpc  = H_ABpc
 
 Hpb = H_ABpb
-H = Hpc + Hpb
+H   = Hpc + Hpb
 
 
 # Excitation operators
-T_A = summation(real_tensor("t", 1,2) * E(1,2) * constrain(1 => virOrbitalA, 2 => occOrbitalA), 1:2)    # should be 1/4 for T2 but in overleaf uses 1/2? 
+T_A = summation(real_tensor("t", 1,2) * E(1,2) * constrain(1 => virOrbitalA, 2 => occOrbitalA), 1:2)   
 T_B = summation(real_tensor("t", 1,2) * E(1,2) * constrain(1 => virOrbitalB, 2 => occOrbitalB), 1:2)
-T_1 = T_A + T_B
+T_1 = T_A + T_B                                                                                                             # T2 = 0 to simplify derivations. 
 
 
 # Functions for single-excitation matrix elements:
 function nonest()
     Eia = E(1,2) * constrain(1 => occOrbitalB, 2 => virOrbitalA)   
-    Ebj = E(3,4) * constrain(3 => virOrbitalA, 4 => occOrbitalB)                 
+    Ebj = E(3,4) * constrain(3 => virOrbitalB, 4 => occOrbitalA)                 
+
 
     # Verification of the first term (single commutator term)
     println("-------TERM 1--------")
     ket = commutator(Hpc,  Ebj)
     bra = 1//2 * Eia
-    println("1/2 * <HF Eia [H(pc), Ebj] HF> = $(simplify_heavy(hf_expectation_value(bra * ket)))")
+    HFexpect = simplify_heavy(hf_expectation_value(bra * ket))
+
+    HFexpect = look_for_tensor_replacements(HFexpect, make_exchange_transformer("g", "L")) 
+    println("<HF Eia [Hpc, Ebj] HF> = $(HFexpect)")
     println()
 
 
@@ -133,15 +128,6 @@ function nonest()
     ket = commutator(H_ABpc, Ebj)
     println("1/2 * <HF Eia [H_ABpc, Ebj] HF> = $(simplify_heavy(hf_expectation_value(bra * ket)))")
     println()
-
-
-
-    #braket = look_for_tensor_replacements(braket, make_exchange_transformer("g", "L")) 
-    #braket = look_for_tensor_replacements(braket, make_exchange_transformer("t", "u"))
-
-    #disable_external_index_translation()
-
-    #braket = simplify_heavy(braket)
 end
 
 
@@ -154,39 +140,63 @@ function onenest()
     println("-------TERM 2 -------")
     bra = 1//2 * Eia
     ket = commutator(Hpc, T_1, Ebj) 
-    println("1/2 * <HF Eia [[H_ABpc, T], Ebj] HF> = $(simplify_heavy(hf_expectation_value(bra * ket)))")
+    HFexpect = simplify_heavy(hf_expectation_value(bra*ket))
+    HFexpect = look_for_tensor_replacements(HFexpect, make_exchange_transformer("g", "L"))
+    println("1/2 * <HF Eia [[H_ABpc, T], Ebj] HF> = $(simplify_heavy(HFexpect)))")
+    println()
 
 
     # Verification of sub terms (splittings A, B and AB) for the singly nested commutator term
     ket = commutator(H_A, T_A, Ebj) 
-    println("1/2 * <HF Eia [[H_A, T_A], Ebj] HF> = $(simplify_heavy(hf_expectation_value(bra * ket)))")
+    HFexpect = simplify_heavy(hf_expectation_value(bra*ket)) 
+    HFexpect = look_for_tensor_replacements(HFexpect, make_exchange_transformer("g", "L"))
+    println("1/2 * <HF Eia [[H_A, T_A], Ebj] HF> = $(simplify_heavy(HFexpect))")
+    println()
 
 
     ket = commutator(H_B, T_B, Ebj)
-    println("1/2 * <HF Eia [[H_B, T_B], Ebj] HF> = $(simplify_heavy(hf_expectation_value(bra * ket)))")
+    HFexpect = simplify_heavy(hf_expectation_value(bra*ket))
+    HFexpect = look_for_tensor_replacements(HFexpect, make_exchange_transformer("g", "L"))
+    println("1/2 * <HF Eia [[H_B, T_B], Ebj] HF> = $(simplify_heavy(HFexpect))")
+    println()
 
 
     ket = commutator(H_ABpc, T_1, Ebj)
-    println("1/2 * <HF Eia [[H_ABpc, T], Ebj] HF> = $(simplify_heavy(hf_expectation_value(bra * ket)))")
+    HFexpect = simplify_heavy(hf_expectation_value(bra*ket))
+    HFexpect = look_for_tensor_replacements(HFexpect, make_exchange_transformer("g", "L"))
+    println("1/2 * <HF Eia [[H_ABpc, T], Ebj] HF> = $(simplify_heavy(HFexpect))")
+    println()
 end
 
+
+function twonest()
+    Eia = E(1,2) * constrain(1 => occOrbitalB, 2 => virOrbitalA)
+    Ebj = E(3,4) * constrain(3 => virOrbitalA, 4 => occOrbitalB)
+
+
+    # Verification of the third term (doubly nested commutator term)
+    println("-------TERM 3 -------")
+    bra = 1//2 * Eia 
+end
 
 
 
 # Testing:
-function testing()
-    Eba = E(1,2) * constrain(1 => virOrbitalA, 2 => virOrbitalA)   
-    Ers = E(3,4) * constrain(3 => virOrbitalA, 4 => occOrbitalA)                 
-    Eai = E(5,6) * constrain(5 => occOrbitalB, 6 => virOrbitalA)
-
+function testing() 
     println("TESTING")
-    bra = Eba
-    ket = Ers
-    println("<HF E_baE_rs  HF> = $(simplify_heavy(hf_expectation_value(bra * ket)))")                                   
+    Ebj = E(1,2) * constrain(1 => occOrbitalB, 2 => virOrbitalA)
+    epqrs = e(3,4,5,6) * constrain(3 => orbitalB, 4 => orbitalB, 5 => virOrbitalA, 6 => occOrbitalB)
+    
+
+    println("[epqrs, Eem] = $(commutator(Ebj, epqrs))")
+
+    #bra = Eik
+    #ket = Ecm
+    #println("<HF Eik Ecm HF> = $(simplify_heavy(hf_expectation_value(bra * ket)))")                                   
 end
 
 
 #nonest()
-#onenest()
-testing()
+onenest()
+#testing()
 
