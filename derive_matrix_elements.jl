@@ -1894,6 +1894,244 @@ function A_abar_i_bbar_j_cbar_k_dbar_l()
     res
 end
 
+
+# Omega terms
+function O_a_ibar()
+    Eia = 1//2 * E(1,2) * constrain(1 => occOrbitalB, 2 => virOrbitalA)   
+
+    bra = act_eT_on_bra(Eia, -T) * H
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T, max_ops = 0))
+
+    res = braket1 
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+function O_a_ibar_b_j() 
+    EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalA)   
+    
+    bra = act_eT_on_bra(EjbEia, -T) * H
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T, max_ops = 0))
+
+    res = braket1
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+function O_abar_ibar_b_jbar()
+    EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalB)   
+    bra = act_eT_on_bra(EjbEia, -T) * H
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T, max_ops = 0))
+
+    res = braket1
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+function O_abar_i()
+    Eia = 1//2 * E(1,2) * constrain(1 => occOrbitalA, virOrbitalB)
+
+    bra = act_eT_on_bra(Eia, -T) * H
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T, max_ops = 0))
+
+    res = braket1
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+function O_abar_i_b_j()
+    EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalA, 3 => occOrbitalA, 4 => virOrbitalB)   
+
+    bra = act_eT_on_bra(EjbEia, -T) * H
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T, max_ops = 0))
+
+    res = braket1
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+function O_abar_ibar_bbar_j()
+    EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalB, 4 => virOrbitalB)   
+
+    bra = act_eT_on_bra(EjbEia, -T) * H
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T, max_ops = 0))
+
+    res = braket1
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+function O_a_ibar_b_jbar()
+    EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalA)   
+
+    bra = act_eT_on_bra(EjbEia, -T) * H
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T, max_ops = 0))
+
+    res = braket1
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+function O_abar_i_bbar_j()
+    EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalA, 4 => virOrbitalB)   
+    bra = act_eT_on_bra(EjbEia, -T) * H
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T, max_ops = 0))
+
+    res = braket1
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+# Eta terms
+function N_c_kbar()
+    Eck = E(3,4) * constrain(3 => virOrbitalA, 4 => occOrbitalB)                 
+
+    bra = act_eT_on_bra(1, -T) * commutator(H, Eck)                                                         # <HF E_ai = 0 so the <HF taumu^dagger tau_nu H^ST HF> = 0
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T))
+
+    res = braket1 
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+function N_c_kbar_d_l()
+    EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalA, 6 => occOrbitalB, 7 => virOrbitalA, 8 => occOrbitalA)                 
+
+    bra = act_eT_on_bra(1, -T) * commutator(H, EckEdl)
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T))
+
+    res = braket1
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+function N_cbar_kbar_d_lbar() 
+    EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalB, 7 => virOrbitalA, 8 => occOrbitalB)
+
+    bra = act_eT_on_bra(1, -T) * commutator(H, EckEdl)
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T))
+
+    res = braket1
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+function N_cbar_k()
+    Eck = E(3,4) * constrain(3 => virOrbitalB, 4 => occOrbitalA)
+
+    bra = act_eT_on_bra(1, -T) * commutator(H, Eck)                                                        
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T))
+
+    res = braket1 
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+function N_cbar_k_d_l() 
+    EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalA, 7 => virOrbitalA, 8 => occOrbitalA)                 
+
+    bra = act_eT_on_bra(1, -T) * commutator(H, EckEdl)
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T))
+
+    res = braket1
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+function N_cbar_kbar_dbar_l()
+    EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalB, 7 => virOrbitalB, 8 => occOrbitalA)                 
+
+    bra = act_eT_on_bra(1, -T) * commutator(H, EckEdl)
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T))
+
+    res = braket1
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+function N_c_kbar_d_lbar()
+    EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalA, 6 => occOrbitalB, 7 => virOrbitalA, 8 => occOrbitalB)                 
+
+    bra = act_eT_on_bra(1, -T) * commutator(H, EckEdl)
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T))
+
+    res = braket1
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+function N_cbar_k_dbar_l() 
+    EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalA, 7 => virOrbitalB, 8 => occOrbitalA)                 
+
+    bra = act_eT_on_bra(1, -T) * commutator(H, EckEdl)
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T))
+
+    res = braket1
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
+# Function for the GS CC energy term
+function E0CC()
+    bra = act_eT_on_bra(1, -T) * 1                                                       
+    braket1 = simplify_heavy(act_eT_on_bra(bra, T))
+
+    res = braket1 
+    res = look_for_tensor_replacements(res, make_exchange_transformer("g", "L"))
+    res = look_for_tensor_replacements(res, make_exchange_transformer("t", "u"))
+
+    res
+end
+
+
 # Display terms
 # Single-single elements CCSD-Jacobian, 4
 println("-------SINGLE-SINGLE ELEMENTS CCSD-JACOBIAN-------")
@@ -1978,11 +2216,30 @@ println("Aĩbj,ck̃dl = $(A_a_ibar_b_j_c_kbar_d_l())")
 #A_abar_i_bbar_j_c_kbar_d_lbar 
 #A_abar_i_bbar_j_cbar_k_dbar_l
 
-# Eta
-#println("-------ELEMENTS OF ETA-VECTOR-------")
 
-
-# Omega
+# Omega, 7
 #println("-------ELEMENTS OF OMEGA-VECTOR-------")
+#O_a_ibar
+#O_a_ibar_b_j 
+#O_abar_ibar_b_jbar 
+#O_abar_i O_abar_i_b_j 
+#O_abar_ibar_bbar_j 
+#O_a_ibar_b_jbar 
+#O_abar_i_bbar_j
 
 
+# Eta, 7
+#println("-------ELEMENTS OF ETA-VECTOR-------")
+#N_c_kbar 
+#N_c_kbar_d_l 
+#N_cbar_kbar_d_lbar 
+#N_cbar_k 
+#N_cbar_k_d_l 
+#N_cbar_kbar_dbar_l 
+#N_c_kbar_d_lbar 
+#N_cbar_k_dbar_l
+
+
+# E0CC, 1
+#println("-------E0_CC-------")
+#E0CC
