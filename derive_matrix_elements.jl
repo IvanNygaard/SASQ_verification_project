@@ -43,7 +43,6 @@ set_color(virOrbitalB, :cyan)
 set_color(occOrbitalB, :cyan)
 
 
-
 # Debugging
 #F_pq = real_tensor("F", 1,2) + summation((-2 * rsym_tensor("g", 1,2,3,3) + rsym_tensor("g", 1,3,3,2)) * constrain(3 => OccupiedOrbital), [3])
 #hA = summation(real_tensor("h", 1,2) * E(1,2) * constrain(1 => orbitalA, 2 => orbitalA), 1:2)
@@ -285,6 +284,7 @@ function A_a_ibar_c_kbar_d_l()
     res
 end
 
+
 function A_a_ibar_cbar_kbar_d_lbar() 
     Eia = 1//2 * E(1,2) * constrain(1 => occOrbitalB, 2 => virOrbitalA)   
     EckEdl = E(3,4) * E(5,6) * constrain(3 => virOrbitalB, 4 => occOrbitalB, 5 => virOrbitalA, 6 => occOrbitalB)                 
@@ -312,6 +312,7 @@ function A_a_ibar_cbar_kbar_d_lbar()
 
     res
 end
+
 
 function A_a_ibar_cbar_k_d_l()
     Eia = 1//2 * E(1,2) * constrain(1 => occOrbitalB, 2 => virOrbitalA)   
@@ -341,6 +342,7 @@ function A_a_ibar_cbar_k_d_l()
     res
 end
 
+
 function A_a_ibar_cbar_kbar_dbar_l() 
     Eia = 1//2 * E(1,2) * constrain(1 => occOrbitalB, 2 => virOrbitalA)   
     EckEdl = E(3,4) * E(5,6) * constrain(3 => virOrbitalB, 4 => occOrbitalB, 5 => virOrbitalB, 6 => occOrbitalA)                 
@@ -368,6 +370,7 @@ function A_a_ibar_cbar_kbar_dbar_l()
 
     res
 end
+
 
 function A_a_ibar_c_kbar_d_lbar() 
     Eia = 1//2 * E(1,2) * constrain(1 => occOrbitalB, 2 => virOrbitalA)   
@@ -397,6 +400,7 @@ function A_a_ibar_c_kbar_d_lbar()
     res
 end
 
+
 function A_a_ibar_cbar_k_dbar_l()  
     Eia = 1//2 * E(1,2) * constrain(1 => occOrbitalB, 2 => virOrbitalA)   
     EckEdl = E(3,4) * E(5,6) * constrain(3 => virOrbitalB, 4 => occOrbitalA, 5 => virOrbitalB, 6 => occOrbitalA)                 
@@ -425,7 +429,8 @@ function A_a_ibar_cbar_k_dbar_l()
     res
 end
 
-function A_abar_i_c_kbar_d_l() 
+
+function A_abar_i_c_kbar_d_l()
     Eia = 1//2 * E(1,2) * constrain(1 => occOrbitalA, 2 => virOrbitalB)   
     EckEdl = E(3,4) * E(5,6) * constrain(3 => virOrbitalA, 4 => occOrbitalB, 5 => virOrbitalA, 6 => occOrbitalA)                 
 
@@ -452,6 +457,7 @@ function A_abar_i_c_kbar_d_l()
 
     res
 end
+
 
 function A_abar_i_cbar_kbar_d_lbar() 
     Eia = 1//2 * E(1,2) * constrain(1 => occOrbitalA, 2 => virOrbitalB)   
@@ -481,6 +487,7 @@ function A_abar_i_cbar_kbar_d_lbar()
     res
 end
 
+
 function A_abar_i_cbar_k_d_l()
     Eia = 1//2 * E(1,2) * constrain(1 => occOrbitalA, 2 => virOrbitalB)   
     EckEdl = E(3,4) * E(5,6) * constrain(3 => virOrbitalB, 4 => occOrbitalA, 5 => virOrbitalA, 6 => occOrbitalA)                 
@@ -508,6 +515,7 @@ function A_abar_i_cbar_k_d_l()
 
     res
 end
+
 
 function A_abar_i_cbar_kbar_dbar_l()
     Eia = 1//2 * E(1,2) * constrain(1 => occOrbitalA, 2 => virOrbitalB)   
@@ -537,6 +545,7 @@ function A_abar_i_cbar_kbar_dbar_l()
     res
 end
 
+
 function A_abar_i_c_kbar_d_lbar()
     Eia = 1//2 * E(1,2) * constrain(1 => occOrbitalA, 2 => virOrbitalB)   
     EckEdl = E(3,4) * E(5,6) * constrain(3 => virOrbitalA, 4 => occOrbitalB, 5 => virOrbitalA, 6 => occOrbitalB)                 
@@ -564,6 +573,7 @@ function A_abar_i_c_kbar_d_lbar()
 
     res
 end
+
 
 function A_abar_i_cbar_k_dbar_l()
     Eia = 1//2 * E(1,2) * constrain(1 => occOrbitalA, 2 => virOrbitalB)   
@@ -622,6 +632,7 @@ function A_a_ibar_b_j_c_kbar()
     res
 end
 
+
 function A_abar_ibar_b_jbar_c_kbar() 
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalB)   
     Eck = E(5,6) * constrain(5 => virOrbitalA, 6 => occOrbitalB)                 
@@ -648,6 +659,7 @@ function A_abar_ibar_b_jbar_c_kbar()
 
     res
 end
+
 
 function A_abar_i_b_j_c_kbar()  
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalA, 3 => occOrbitalA, 4 => virOrbitalB)   
@@ -676,6 +688,7 @@ function A_abar_i_b_j_c_kbar()
     res
 end
 
+
 function A_abar_ibar_bbar_j_c_kbar() 
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalB, 4 => virOrbitalB)   
     Eck = E(5,6) * constrain(5 => virOrbitalA, 6 => occOrbitalB)                 
@@ -703,6 +716,7 @@ function A_abar_ibar_bbar_j_c_kbar()
     res
 end
 
+
 function A_a_ibar_b_jbar_c_kbar()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalA)   
     Eck = E(5,6) * constrain(5 => virOrbitalA, 6 => occOrbitalB)                 
@@ -729,6 +743,7 @@ function A_a_ibar_b_jbar_c_kbar()
 
     res
 end
+
 
 function A_abar_i_bbar_j_c_kbar()  
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalA, 4 => virOrbitalB)   
@@ -785,6 +800,7 @@ function A_a_ibar_b_j_cbar_k()
     res
 end
 
+
 function A_abar_ibar_b_jbar_cbar_k() 
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalB)   
     Eck = E(5,6) * constrain(5 => virOrbitalB, 6 => occOrbitalA)                 
@@ -811,6 +827,7 @@ function A_abar_ibar_b_jbar_cbar_k()
 
     res
 end
+
 
 function A_abar_i_b_j_cbar_k()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalA, 3 => occOrbitalA, 4 => virOrbitalB)   
@@ -839,6 +856,7 @@ function A_abar_i_b_j_cbar_k()
     res
 end
 
+
 function A_abar_ibar_bbar_j_cbar_k()  
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalB, 4 => virOrbitalB)   
     Eck = E(5,6) * constrain(5 => virOrbitalB, 6 => occOrbitalA)                 
@@ -866,6 +884,7 @@ function A_abar_ibar_bbar_j_cbar_k()
     res
 end
 
+
 function A_a_ibar_b_jbar_cbar_k() 
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalA)   
     Eck = E(5,6) * constrain(5 => virOrbitalB, 6 => occOrbitalA)                 
@@ -892,6 +911,7 @@ function A_a_ibar_b_jbar_cbar_k()
 
     res
 end
+
 
 function A_abar_i_bbar_j_cbar_k()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalA, 4 => virOrbitalB)   
@@ -949,6 +969,7 @@ function A_a_ibar_b_j_c_kbar_d_l()
     res
 end
 
+
 function A_a_ibar_b_j_cbar_kbar_d_lbar() 
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalA)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalB, 7 => virOrbitalA, 8 => occOrbitalB)                 
@@ -975,6 +996,7 @@ function A_a_ibar_b_j_cbar_kbar_d_lbar()
 
     res
 end
+
 
 function A_a_ibar_b_j_cbar_k_d_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalA)   
@@ -1003,6 +1025,7 @@ function A_a_ibar_b_j_cbar_k_d_l()
     res
 end
 
+
 function A_a_ibar_b_j_cbar_kbar_dbar_l()  
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalA)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalB, 7 => virOrbitalB, 8 => occOrbitalA)                 
@@ -1029,6 +1052,7 @@ function A_a_ibar_b_j_cbar_kbar_dbar_l()
 
     res
 end
+
 
 function A_a_ibar_b_j_c_kbar_d_lbar() 
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalA)   
@@ -1057,6 +1081,7 @@ function A_a_ibar_b_j_c_kbar_d_lbar()
     res
 end
 
+
 function A_a_ibar_b_j_cbar_k_dbar_l() 
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalA)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalA, 7 => virOrbitalB, 8 => occOrbitalA)                 
@@ -1083,6 +1108,7 @@ function A_a_ibar_b_j_cbar_k_dbar_l()
 
     res
 end
+
 
 function A_abar_ibar_b_jbar_c_kbar_d_l() 
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalB)   
@@ -1111,6 +1137,7 @@ function A_abar_ibar_b_jbar_c_kbar_d_l()
     res
 end
 
+
 function A_abar_ibar_b_jbar_cbar_kbar_d_lbar()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalB)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalB, 7 => virOrbitalA, 8 => occOrbitalB)                 
@@ -1137,6 +1164,7 @@ function A_abar_ibar_b_jbar_cbar_kbar_d_lbar()
 
     res
 end
+
 
 function A_abar_ibar_b_jbar_cbar_k_d_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalB)   
@@ -1165,6 +1193,7 @@ function A_abar_ibar_b_jbar_cbar_k_d_l()
     res
 end
 
+
 function A_abar_ibar_b_jbar_cbar_kbar_dbar_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalB)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalB, 7 => virOrbitalB, 8 => occOrbitalA)                 
@@ -1191,6 +1220,7 @@ function A_abar_ibar_b_jbar_cbar_kbar_dbar_l()
 
     res
 end
+
 
 function A_abar_ibar_b_jbar_c_kbar_d_lbar()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalB)   
@@ -1219,6 +1249,7 @@ function A_abar_ibar_b_jbar_c_kbar_d_lbar()
     res
 end
 
+
 function A_abar_ibar_b_jbar_cbar_k_dbar_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalB)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalA, 7 => virOrbitalB, 8 => occOrbitalA)                 
@@ -1245,6 +1276,7 @@ function A_abar_ibar_b_jbar_cbar_k_dbar_l()
 
     res
 end
+
 
 function A_abar_i_b_j_c_kbar_d_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalA, 3 => occOrbitalA, 4 => virOrbitalB)   
@@ -1273,6 +1305,7 @@ function A_abar_i_b_j_c_kbar_d_l()
     res
 end
 
+
 function A_abar_i_b_j_cbar_kbar_d_lbar() 
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalA, 3 => occOrbitalA, 4 => virOrbitalB)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalB, 7 => virOrbitalA, 8 => occOrbitalB)                 
@@ -1299,6 +1332,7 @@ function A_abar_i_b_j_cbar_kbar_d_lbar()
 
     res
 end
+
 
 function A_abar_i_b_j_cbar_k_d_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalA, 3 => occOrbitalA, 4 => virOrbitalB)   
@@ -1327,6 +1361,7 @@ function A_abar_i_b_j_cbar_k_d_l()
     res
 end
 
+
 function A_abar_i_b_j_cbar_kbar_dbar_l() 
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalA, 3 => occOrbitalA, 4 => virOrbitalB)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalB, 7 => virOrbitalB, 8 => occOrbitalA)                 
@@ -1353,6 +1388,7 @@ function A_abar_i_b_j_cbar_kbar_dbar_l()
 
     res
 end
+
 
 function A_abar_i_b_j_c_kbar_d_lbar() 
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalA, 3 => occOrbitalA, 4 => virOrbitalB)   
@@ -1381,6 +1417,7 @@ function A_abar_i_b_j_c_kbar_d_lbar()
     res
 end
 
+
 function A_abar_i_b_j_cbar_k_dbar_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalA, 3 => occOrbitalA, 4 => virOrbitalB)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalA, 7 => virOrbitalB, 8 => occOrbitalA)                 
@@ -1407,6 +1444,7 @@ function A_abar_i_b_j_cbar_k_dbar_l()
 
     res
 end
+
 
 function A_abar_ibar_bbar_j_c_kbar_d_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalB, 4 => virOrbitalB)   
@@ -1435,6 +1473,7 @@ function A_abar_ibar_bbar_j_c_kbar_d_l()
     res
 end
 
+
 function A_abar_ibar_bbar_j_cbar_kbar_d_lbar()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalB, 4 => virOrbitalB)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalB, 7 => virOrbitalA, 8 => occOrbitalB)                 
@@ -1461,6 +1500,7 @@ function A_abar_ibar_bbar_j_cbar_kbar_d_lbar()
 
     res
 end
+
 
 function A_abar_ibar_bbar_j_cbar_k_d_l() 
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalB, 4 => virOrbitalB)   
@@ -1489,6 +1529,7 @@ function A_abar_ibar_bbar_j_cbar_k_d_l()
     res
 end
 
+
 function A_abar_ibar_bbar_j_cbar_kbar_dbar_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalB, 4 => virOrbitalB)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalB, 7 => virOrbitalB, 8 => occOrbitalA)                 
@@ -1515,6 +1556,7 @@ function A_abar_ibar_bbar_j_cbar_kbar_dbar_l()
 
     res
 end
+
 
 function A_abar_ibar_bbar_j_c_kbar_d_lbar()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalB, 4 => virOrbitalB)   
@@ -1543,6 +1585,7 @@ function A_abar_ibar_bbar_j_c_kbar_d_lbar()
     res
 end
 
+
 function A_abar_ibar_bbar_j_cbar_k_dbar_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalB, 4 => virOrbitalB)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalA, 7 => virOrbitalB, 8 => occOrbitalA)                 
@@ -1569,6 +1612,7 @@ function A_abar_ibar_bbar_j_cbar_k_dbar_l()
 
     res
 end
+
 
 function A_a_ibar_b_jbar_c_kbar_d_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalA)   
@@ -1597,6 +1641,7 @@ function A_a_ibar_b_jbar_c_kbar_d_l()
     res
 end
 
+
 function A_a_ibar_b_jbar_cbar_kbar_d_lbar() 
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalA)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalB, 7 => virOrbitalA, 8 => occOrbitalB)                 
@@ -1623,6 +1668,7 @@ function A_a_ibar_b_jbar_cbar_kbar_d_lbar()
 
     res
 end
+
 
 function A_a_ibar_b_jbar_cbar_k_d_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalA)   
@@ -1651,6 +1697,7 @@ function A_a_ibar_b_jbar_cbar_k_d_l()
     res
 end
 
+
 function A_a_ibar_b_jbar_cbar_kbar_dbar_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalA)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalB, 7 => virOrbitalB, 8 => occOrbitalA)                 
@@ -1677,6 +1724,7 @@ function A_a_ibar_b_jbar_cbar_kbar_dbar_l()
 
     res
 end
+
 
 function A_a_ibar_b_jbar_c_kbar_d_lbar() 
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalA)   
@@ -1705,6 +1753,7 @@ function A_a_ibar_b_jbar_c_kbar_d_lbar()
     res
 end
 
+
 function A_a_ibar_b_jbar_cbar_k_dbar_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalB, 2 => virOrbitalA, 3 => occOrbitalB, 4 => virOrbitalA)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalA, 7 => virOrbitalB, 8 => occOrbitalA)                 
@@ -1731,6 +1780,7 @@ function A_a_ibar_b_jbar_cbar_k_dbar_l()
 
     res
 end
+
 
 function A_abar_i_bbar_j_c_kbar_d_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalA, 4 => virOrbitalB)   
@@ -1759,6 +1809,7 @@ function A_abar_i_bbar_j_c_kbar_d_l()
     res
 end
 
+
 function A_abar_i_bbar_j_cbar_kbar_d_lbar() 
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalA, 4 => virOrbitalB)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalB, 7 => virOrbitalA, 8 => occOrbitalB)                 
@@ -1785,6 +1836,7 @@ function A_abar_i_bbar_j_cbar_kbar_d_lbar()
 
     res
 end
+
 
 function A_abar_i_bbar_j_cbar_k_d_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalA, 4 => virOrbitalB)   
@@ -1813,6 +1865,7 @@ function A_abar_i_bbar_j_cbar_k_d_l()
     res
 end
 
+
 function A_abar_i_bbar_j_cbar_kbar_dbar_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalA, 4 => virOrbitalB)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalB, 6 => occOrbitalB, 7 => virOrbitalB, 8 => occOrbitalA)                 
@@ -1840,6 +1893,7 @@ function A_abar_i_bbar_j_cbar_kbar_dbar_l()
     res
 end
 
+
 function A_abar_i_bbar_j_c_kbar_d_lbar()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalA, 4 => virOrbitalB)   
     EckEdl = E(5,6) * E(7,8) * constrain(5 => virOrbitalA, 6 => occOrbitalB, 7 => virOrbitalA, 8 => occOrbitalB)                 
@@ -1866,6 +1920,7 @@ function A_abar_i_bbar_j_c_kbar_d_lbar()
 
     res
 end
+
 
 function A_abar_i_bbar_j_cbar_k_dbar_l()
     EjbEia = (1//3 * E(1,2) * E(3,4) + 1//6 * E(3,2) * E(1,4)) * constrain(1 => occOrbitalA, 2 => virOrbitalB, 3 => occOrbitalA, 4 => virOrbitalB)   
@@ -2148,98 +2203,99 @@ println()
 # Single-double elements CCSD-Jacobian, 12
 println("-------SINGLE-DOUBLE ELEMENTS CCSD-JACOBIAN-------")
 println("Aaĩ,ck̃dl = $(A_a_ibar_c_kbar_d_l())")
-#A_a_ibar_cbar_kbar_d_lbar 
-#A_a_ibar_cbar_k_d_l 
-#A_a_ibar_cbar_kbar_dbar_l 
-#A_a_ibar_c_kbar_d_lbar 
-#A_a_ibar_cbar_k_dbar_l 
-#A_abar_i_c_kbar_d_l 
-#A_abar_i_cbar_kbar_d_lbar
-#A_abar_i_b_j_cbar_k 
-#A_abar_ibar_bbar_j_cbar_k 
-#A_a_ibar_b_jbar_cbar_k 
-#A_abar_i_bbar_j_cbar_k
+println("Aaĩ,c̃k̃dl̃ = $(A_a_ibar_cbar_kbar_d_lbar())")
+println("Aaĩ,c̃kdl = $(A_a_ibar_cbar_k_d_l())")
+println("Aaĩ,c̃k̃d̃l = $(A_a_ibar_cbar_kbar_dbar_l())")
+println("Aaĩ,ck̃dl̃ = $(A_a_ibar_c_kbar_d_lbar())")
+println("Aaĩ,c̃kd̃l = $(A_a_ibar_cbar_k_dbar_l)")
+println("Aãi,ck̃dl = $(A_abar_i_c_kbar_d_l())")
+println("Aãi,c̃k̃dl̃ = $(A_abar_i_cbar_kbar_d_lbar())")
+println("Aãi,c̃kdl = $(A_abar_i_cbar_k_d_l())")
+println("Aãi,c̃k̃d̃l = $(A_abar_i_cbar_kbar_dbar_l())")
+println("Aãi,ck̃dl̃ = $(A_abar_i_c_kbar_d_lbar())")
+println("Aãi,c̃kd̃l = $(A_abar_i_cbar_k_dbar_l())")
 
 
 # Double-single elements CCSD-Jacobian, 12
 println("-------DOUBLE-SINGLE ELEMENTS CCSD-JACOBIAN-------")
-println("Aaĩbj,ck̃  = $(A_a_ibar_b_j_c_kbar())")
-#A_abar_ibar_b_jbar_c_kbar 
-#A_abar_i_b_j_c_kbar 
-#A_abar_ibar_bbar_j_c_kbar 
-#A_a_ibar_b_jbar_c_kbar 
-#A_abar_i_bbar_j_c_kbar
-#A_a_ibar_b_j_cbar_k 
-#A_abar_ibar_b_jbar_cbar_k 
-#A_abar_i_b_j_cbar_k 
-#A_abar_ibar_bbar_j_cbar_k 
-#A_a_ibar_b_jbar_cbar_k 
-#A_abar_i_bbar_j_cbar_k
+println("Aaĩbj,ck̃ = $(A_a_ibar_b_j_c_kbar())")
+println("Aãĩbj̃,ck̃ = $(A_abar_ibar_b_jbar_c_kbar())")
+println("Aãibj,ck̃ = $(A_abar_i_b_j_c_kbar())")
+println("Aãĩb̃j,ck̃ = $(A_abar_ibar_bbar_j_c_kbar())")
+println("Aaĩbj̃,ck̃ = $(A_a_ibar_b_jbar_c_kbar())")
+println("Aãib̃j,ck̃ = $(A_abar_i_bbar_j_c_kbar())")
+println("Aaĩbj,c̃k = $(A_a_ibar_b_j_cbar_k())")
+println("Aãĩbj̃,c̃k = $(A_abar_ibar_b_jbar_cbar_k())")
+println("Aãibj,c̃k = $(A_abar_i_b_j_cbar_k())")
+println("Aãĩb̃j,c̃k = $(A_abar_ibar_bbar_j_cbar_k())")
+println("Aaĩbj̃,c̃k = $(A_a_ibar_b_jbar_cbar_k())")
+println("Aãib̃j,c̃k = $(A_abar_i_bbar_j_cbar_k())")
 
 
 # Double-double elements CCSD-Jacobian, 36
 println("-------DOUBLE-DOUBLE ELEMENTS CCSD-JACOBIAN-------")
-println("Aĩbj,ck̃dl = $(A_a_ibar_b_j_c_kbar_d_l())")
-#A_a_ibar_b_j_cbar_kbar_d_lbar 
-#A_a_ibar_b_j_cbar_k_d_l 
-#A_a_ibar_b_j_cbar_kbar_dbar_l 
-#A_a_ibar_b_j_c_kbar_d_lbar 
-#A_a_ibar_b_j_cbar_k_dbar_l 
-#A_abar_ibar_b_jbar_c_kbar_d_l 
-#A_abar_ibar_b_jbar_cbar_kbar_d_lbar 
-#A_abar_ibar_b_jbar_cbar_k_d_l 
-#A_abar_ibar_b_jbar_cbar_kbar_dbar_l
-#A_abar_ibar_b_jbar_c_kbar_d_lbar 
-#A_abar_ibar_b_jbar_cbar_k_dbar_l
-#A_abar_i_b_j_c_kbar_d_l 
-#A_abar_i_b_j_cbar_kbar_d_lbar 
-#A_abar_i_b_j_cbar_k_d_l 
-#A_abar_i_b_j_cbar_kbar_dbar_l 
-#A_abar_i_b_j_c_kbar_d_lbar 
-#A_abar_i_b_j_cbar_k_dbar_l
-#A_abar_ibar_bbar_j_c_kbar_d_l 
-#A_abar_ibar_bbar_j_cbar_kbar_d_lbar 
-#A_abar_ibar_bbar_j_cbar_k_d_l 
-#A_abar_ibar_bbar_j_cbar_kbar_dbar_l 
-#A_abar_ibar_bbar_j_c_kbar_d_lbar 
-#A_abar_ibar_bbar_j_cbar_k_dbar_l
-#A_a_ibar_b_jbar_c_kbar_d_l 
-#A_a_ibar_b_jbar_cbar_kbar_d_lbar 
-#A_a_ibar_b_jbar_cbar_k_d_l 
-#A_a_ibar_b_jbar_cbar_kbar_dbar_l 
-#A_a_ibar_b_jbar_c_kbar_d_lbar 
-#A_a_ibar_b_jbar_cbar_k_dbar_l
-#A_abar_i_bbar_j_c_kbar_d_l 
-#A_abar_i_bbar_j_cbar_kbar_d_lbar 
-#A_abar_i_bbar_j_cbar_k_d_l 
-#A_abar_i_bbar_j_cbar_kbar_dbar_l 
-#A_abar_i_bbar_j_c_kbar_d_lbar 
-#A_abar_i_bbar_j_cbar_k_dbar_l
+println("Aaĩbj,ck̃dl = $(A_a_ibar_b_j_c_kbar_d_l())")
+println("Aaĩbj,c̃k̃dl̃ = $(A_a_ibar_b_j_cbar_kbar_d_lbar())")
+println("Aaĩbj,c̃kdl = $(A_a_ibar_b_j_cbar_k_d_l())")
+println("Aaĩbj,c̃k̃d̃l = $(A_a_ibar_b_j_cbar_kbar_dbar_l())")
+println("Aaĩbj,ck̃dl̃ = $(A_a_ibar_b_j_c_kbar_d_lbar())")
+println("Aaĩbj,c̃kd̃l = $(A_a_ibar_b_j_cbar_k_dbar_l())")
+println("Aãĩbj̃,ck̃dl = $(A_abar_ibar_b_jbar_c_kbar_d_l())")
+println("Aãĩbj̃,c̃k̃dl̃ = $(A_abar_ibar_b_jbar_cbar_kbar_d_lbar())")
+println("Aãĩbj̃,c̃kdl = $(A_abar_ibar_b_jbar_cbar_k_d_l())")
+println("Aãĩbj̃,c̃k̃d̃l = $(A_abar_ibar_b_jbar_cbar_kbar_dbar_l())")
+println("Aãĩbj̃,ck̃dl̃ = $(A_abar_ibar_b_jbar_c_kbar_d_lbar())")
+println("Aãĩbj̃,c̃kd̃l = $(A_abar_ibar_b_jbar_cbar_k_dbar_l())")
+println("Aãibj,ck̃dl = $(A_abar_i_b_j_c_kbar_d_l())")
+println("Aãibj,c̃k̃dl̃ = $(A_abar_i_b_j_cbar_kbar_d_lbar())")
+println("Aãibj,c̃kdl = $(A_abar_i_b_j_cbar_k_d_l())")
+println("Aãibj,c̃k̃d̃l = $(A_abar_i_b_j_cbar_kbar_dbar_l())")
+println("Aãibj,ck̃dl̃ = $(A_abar_i_b_j_c_kbar_d_lbar())")
+println("Aãibj,c̃kd̃l = $(A_abar_i_b_j_cbar_k_dbar_l())")
+println("Aãĩb̃j,ck̃dl = $(A_abar_ibar_bbar_j_c_kbar_d_l())") 
+println("Aãĩb̃j,c̃k̃dl = $(A_abar_ibar_bbar_j_cbar_kbar_d_lbar())")
+println("Aãĩb̃j,c̃kdl = $(A_abar_ibar_bbar_j_cbar_k_d_l())")
+println("Aãĩb̃j,c̃k̃d̃l = $(A_abar_ibar_bbar_j_cbar_kbar_dbar_l())")
+println("Aãĩb̃j,ck̃dl̃ = $(A_abar_ibar_bbar_j_c_kbar_d_lbar())")
+println("Aãĩb̃j,c̃kd̃l = $(A_abar_ibar_bbar_j_cbar_k_dbar_l())")
+println("Aaĩbj̃,ck̃dl = $(A_a_ibar_b_jbar_c_kbar_d_l())")
+println("Aaĩbj̃,c̃k̃dl̃ = $(A_a_ibar_b_jbar_cbar_kbar_d_lbar())")
+println("Aaĩbj̃,c̃kdl = $(A_a_ibar_b_jbar_cbar_k_d_l())")
+println("Aaĩbj̃,c̃k̃d̃l = $(A_a_ibar_b_jbar_cbar_kbar_dbar_l())")
+println("Aaĩbj̃_ck̃dl̃ = $(A_a_ibar_b_jbar_c_kbar_d_lbar())")
+println("Aaĩbj̃,c̃kd̃l = $(A_a_ibar_b_jbar_cbar_k_dbar_l())")
+println("Aãib̃j,ck̃dl = $(A_abar_i_bbar_j_c_kbar_d_l())")
+println("Aãib̃j,c̃k̃dl̃ = $(A_abar_i_bbar_j_cbar_kbar_d_lbar())")
+println("Aãib̃j,c̃kdl = $(A_abar_i_bbar_j_cbar_k_d_l())")
+println("Aãib̃j,c̃k̃d̃l = $(A_abar_i_bbar_j_cbar_kbar_dbar_l())")
+println("Aãib̃j,ck̃dl̃ = $(A_abar_i_bbar_j_c_kbar_d_lbar())")
+println("Aãib̃j,c̃kd̃l = $(A_abar_i_bbar_j_cbar_k_dbar_l())")
 
 
 # Omega, 7
 #println("-------ELEMENTS OF OMEGA-VECTOR-------")
-#O_a_ibar
-#O_a_ibar_b_j 
-#O_abar_ibar_b_jbar 
-#O_abar_i O_abar_i_b_j 
-#O_abar_ibar_bbar_j 
-#O_a_ibar_b_jbar 
-#O_abar_i_bbar_j
+println("Oaĩ   = $(O_a_ibar())")
+println("Oaĩbj = $(O_a_ibar_b_j())")
+println("Oãĩbj̃ = $(O_abar_ibar_b_jbar())")
+println("Oãi   = $(O_abar_i())")
+println("Oãibj = $(O_abar_i_b_j())")
+println("Oãĩb̃j = $(O_abar_ibar_bbar_j())")
+println("Oaĩbj̃ = $(O_a_ibar_b_jbar())")
+println("Oãib̃j = $(O_abar_i_bbar_j())")
 
 
 # Eta, 7
 #println("-------ELEMENTS OF ETA-VECTOR-------")
-#N_c_kbar 
-#N_c_kbar_d_l 
-#N_cbar_kbar_d_lbar 
-#N_cbar_k 
-#N_cbar_k_d_l 
-#N_cbar_kbar_dbar_l 
-#N_c_kbar_d_lbar 
-#N_cbar_k_dbar_l
+println("Nck̃   = $(N_c_kbar())")
+println("Nck̃dl = $(N_c_kbar_d_l())")
+println("Nc̃k̃dl̃ = $(N_cbar_kbar_d_lbar())")
+println("Nc̃k   = $(N_cbar_k())")
+println("Nc̃kdl = $(N_cbar_k_d_l())")
+println("Nc̃k̃d̃l = $(N_cbar_kbar_dbar_l())")
+println("Nck̃dl̃ = $(N_c_kbar_d_lbar())")
+println("Nc̃kd̃l = $(N_cbar_k_dbar_l())")
 
 
 # E0CC, 1
 #println("-------E0_CC-------")
-#E0CC
+println("E0CC $(E0CC())")
