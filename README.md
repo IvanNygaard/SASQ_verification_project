@@ -1,1 +1,2 @@
-# Efficient-Optical-Flow
+# SASQ Code for TKJ4510 Applied Theoretical Chemistry, Specialization Project
+Note that due to time constraints i have not actually ran every function so there may be some types in there. The eta terms do not work yet. The file a11_verification.jl contains the code that was used to check the work done with pen and paper (simplified derivation of the first matrix element of the CC-Jacobian). The file derive_matrix_elements.jl contains the code used to generate the matrix-elements of the CCSD-EOM Hamiltonian. 
