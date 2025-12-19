@@ -21,7 +21,7 @@ virOrbitalB = new_space(:virOrbitalB, "voB", "abcdefg");
 occOrbitalB = new_space(:occOrbitalB, "ooB", "ijklmno");
 
 
-# Enforce splitting s.t. orbitalsA, orbitalsB ⊆ GeneralOrbital, orbitalsA ∪ orbitalsB = GeneralOrbital, orbitalsA ∩ orbitalsB = {} etc.
+# Enforce splitting s.t. orbitalsA, orbitalsB ⊆ GeneralOrbital, orbitalsA ∪ orbitalsB = GeneralOrbital, orbitalsA ∩ orbitalsB = {Ø} etc.
 add_space_sum(orbitalA, orbitalB, GeneralOrbital)
 add_space_sum(virOrbitalA, virOrbitalB, VirtualOrbital)
 add_space_sum(occOrbitalA, occOrbitalB, OccupiedOrbital)
@@ -81,11 +81,10 @@ H_ABpc = gABBA + gBBAA
 
 
 H_ABpb = hAB + hBA + gBAAA + gABAA + gABAB + gBABA + gABBB + gBABB
-#H_ABpb = gBAAA + gABAA + gABAB + gBABA + gABBB + gBABB
 
 
 Hpc  = H_A + H_B + H_ABpc
-#Hpc  = H_ABpc
+
 
 Hpb = H_ABpb
 H   = Hpc + Hpb

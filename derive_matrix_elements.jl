@@ -3,7 +3,8 @@
 # Author: Ivan Nygaard
 # Created: 05/11/2025
 # Description: Code used to derive the CCSD-EOM
-#              matrix (A, eta, omega). 
+#              matrix (A, eta, omega). NB: Eta functions
+#              do not work yet.
 # -----------------------------------------------------
 
 # Imports.
