@@ -177,6 +177,19 @@ function twonest()
     # Verification of the third term (doubly nested commutator term)
     println("-------TERM 3 -------")
     bra = 1//2 * Eia 
+    
+    ket = commutator(H_A, T_A, T_A, Ebj)
+    HFexpect = simplify_heavy(hf_expectation_value(bra*ket))
+    HFexpect = look_for_tensor_replacements(HFexpect, make_exchange_transformer("g", "L"))
+    println("1/2 <HF Eia [[[H_A, T_A], T_A], Ebj] HF> = $(simplify_heavy(HFexpect))")
+    println()
+
+
+    ket = commutator(H_B, T_B, T_B, Ebj)
+    HFexpect = simplify_heavy(hf_expectation_value(bra*ket))
+    HFexpect = look_for_tensor_replacements(HFexpect, make_exchange_transformer("g", "L"))
+    println("1/2 <HF Eia [[[H_B, T_B], T_B], EBj] HF > = $(simplify_heavy(HFexpect))")
+    println()
 end
 
 
@@ -196,7 +209,8 @@ function testing()
 end
 
 
-#nonest()
+nonest()
 onenest()
+twonest()
 #testing()
 
